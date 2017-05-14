@@ -190,8 +190,16 @@ int main(int argc, char* argv[])
 
 
 
-                
-                 
+                 // write RGB triple to dikuout
+
+                 for(int m = 0; m < f; m++) 
+
+                 {
+
+                 fwrite(&triple, sizeof(RGBTRIPLE), 1, diku2);
+                       
+                 }
+
                  }
 
 
