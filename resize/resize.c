@@ -184,9 +184,9 @@ int main(int argc, char* argv[])
 
 
 
+// read RGB triple from dikuin
 
-
-                
+                 fread(&triple, sizeof(RGBTRIPLE), 1, diku1);
 
 
 
