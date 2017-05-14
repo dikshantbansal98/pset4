@@ -40,10 +40,38 @@
 
     
 
-    
+    // Iterate over file contents
 
-   
+    while (fread(buf, BLOCK_SIZE, 1, f))
 
-    return 0;
+    {
+
+       
+
+       
+
+        {
+
+            // Closing all the opened file
+
+            if (diku != NULL)
+
+                fclose(diku);
+
+            
+
+            char filename[8];
+
+            sprintf(filename, "%03d.jpg", amount);
+
+                
+
+            // Open a new JPEG file for writing
+
+            diku = fopen(filename, "w");
+            amount++;
+        }
+    }
+      return 0;
 
  } 
