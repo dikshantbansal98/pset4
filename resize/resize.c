@@ -49,7 +49,21 @@ int main(int argc, char* argv[])
 
 
 
-		
+		// open input file 
+
+		FILE* diku1 = fopen(dikuin, "r");
+
+		if (diku1 == NULL)
+
+		{
+
+				printf("unable to open file %s.\n", dikuin);
+
+				return 1;
+
+		}
+
+
 
 		// open output file
 
