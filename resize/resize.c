@@ -1,0 +1,152 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+
+
+#include "bmp.h"
+
+
+
+int main(int argc, char* argv[])
+
+{
+
+		// ensuring proper usage
+
+		if (argc != 4)
+
+		{
+
+				printf("enter arguments not valid\n");
+
+				return 1;
+
+		}
+
+
+
+
+		int f = atoi(argv[1]);
+
+		if(f < 0 || f > 100)
+
+		{
+
+				printf("f is either nonpositive or greater than 100\n");
+
+				return 1;
+
+		}
+
+
+
+		// creating  pointer pointing to character as variables
+
+		char* dikuin = argv[2];
+
+		char* dikuout = argv[3];
+
+
+
+		
+
+		// open output file
+
+		FILE* diku2 = fopen(dikuout, "w");
+
+		if (diku2 == NULL)
+
+		{
+
+				fclose(diku1);
+
+				fprintf(stderr, "Could not create the file %s.\n", dikuout);
+
+				return 1;
+
+		}
+
+
+
+		// reading inputfiles BITMAPFILEHEADER
+
+		BITMAPFILEHEADER bf;
+
+		fread(&bf, sizeof(BITMAPFILEHEADER), 1, diku1);
+
+
+
+		// working on input file BITMAPINFOHEADER
+
+		BITMAPINFOHEADER bi;
+
+		fread(&bi, sizeof(BITMAPINFOHEADER), 1, diku1);
+
+
+
+		// checking if input file is valid
+
+		if (bf.bfType != 0x4d42 || bf.bfOffBits != 54 || bi.biSize != 40 || 
+
+						bi.biBitCount != 24 || bi.biCompression != 0)
+
+		{
+
+				fclose(diku2);
+
+				fclose(diku1);
+
+				fprintf(stderr, "Unsupported file format.\n");
+
+				return 4;
+
+		}
+
+
+
+		// construct bitmap headers for the dikuout
+
+		BITMAPFILEHEADER output_bfh;
+
+		BITMAPINFOHEADER output_bi;	
+
+		output_bfh = bf;
+
+		output_bi = bi;
+
+		output_bi.biWidth = bi.biWidth * f;
+
+		output_bi.biHeight = bi.biHeight * f;
+
+
+
+	
+
+		output_bfh.bfSize = 54 + output_bi.biWidth * abs(output_bi.biHeight) * 3 + abs(output_bi.biHeight) *  out_padding;
+
+		output_bi.biSizeImage = ((((output_bi.biWidth * output_bi.biBitCount) + 31) & ~31) / 8) * abs(output_bi.biHeight);
+
+
+
+		// write output file's BITMAPFILEHEADER
+
+		fwrite(&output_bfh, sizeof(BITMAPFILEHEADER), 1, diku2);
+
+
+
+		// write dikuout's BITMAPINFOHEADER
+
+		fwrite(&output_bi, sizeof(BITMAPINFOHEADER), 1, diku2);
+
+
+
+	
+                fclose(diku1);
+                fclose(diku2);
+
+                // everything got completed and working well !!!!
+
+                return 0;
+
+}
