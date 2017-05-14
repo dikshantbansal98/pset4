@@ -114,7 +114,36 @@ int main(int argc, char* argv[])
 
 
 
-   
+    // iterate over infile's scanlines
+
+    for (int i = 0, biHeight = abs(bi.biHeight); i < biHeight; i++)
+
+    {
+
+        
+            fwrite(&triple, sizeof(RGBTRIPLE), 1, dinkyptr);
+
+	    
+
+	    
+
+        }
+
+
+
+        // skiping all over padding, if any is present
+
+        fseek(dikuptr, padding, SEEK_CUR);
+
+
+
+        // then add it back (to demonstrate how)
+
+        for (int k = 0; k < padding; k++)
+
+            fputc(0x00, dinkyptr);
+
+    }
 
 
 
