@@ -88,6 +88,15 @@
 
     
 
+    if (diku != NULL)
+
+        fclose(diku);
+
+    
+
+    fclose(f);
+
+ 
 
     return 0;
 
