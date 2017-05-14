@@ -69,9 +69,24 @@
             // Open a new JPEG file for writing
 
             diku = fopen(filename, "w");
+
+            
+
             amount++;
+
         }
+
+        
+
+        if (diku != NULL)
+
+            fwrite(buf, BLOCK_SIZE, 1, diku);
+
     }
-      return 0;
+
+    
+
+
+    return 0;
 
  } 
