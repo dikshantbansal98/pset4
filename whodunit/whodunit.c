@@ -12,7 +12,18 @@ int main(int argc, char* argv[])
 
 {
 
-   
+    // ensuring  proper usage of arg
+
+    if (argc != 2)
+
+    {
+
+        printf("whodunit file must contain exactly two arguments \n");
+
+        return 1;
+
+    }
+
 
 
     // open input file 
