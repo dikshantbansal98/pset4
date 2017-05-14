@@ -135,6 +135,15 @@ int main(int argc, char* argv[])
 
 
 
+		// determining padding spacing
+
+	
+		int in_padding =  (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+
+		int out_padding =  (4 - (output_bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+
+
+
 	
 
 		output_bfh.bfSize = 54 + output_bi.biWidth * abs(output_bi.biHeight) * 3 + abs(output_bi.biHeight) *  out_padding;
