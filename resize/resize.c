@@ -155,7 +155,61 @@ int main(int argc, char* argv[])
 
 
 
-	
+		for (int i = 0, biHeight = abs(bi.biHeight); i < biHeight; i++)
+
+		{
+                // displaying factor number of-times
+                for(int n=0;n<f;n++)
+
+                 {
+                    
+                 // iterate over pixels in scanline
+
+                 for (int j = 0; j < bi.biWidth; j++)
+
+                 {
+
+                 // temporary storage
+
+                 RGBTRIPLE triple;
+
+
+
+
+
+                
+
+
+
+                
+                 
+                 }
+
+
+
+                 // padding skipping in diku input file
+
+                 fseek(diku1, in_padding, SEEK_CUR);
+
+
+
+                 // then add it to diku output file
+
+                 for (int k = 0; k <out_padding; k++)
+
+                 fputc(0x00, diku2);
+
+
+
+                 fseek(diku1, -(bi.biWidth * 3 + in_padding ), SEEK_CUR);
+
+
+
+                 }
+
+                 fseek(diku1, bi.biWidth*3+in_padding, SEEK_CUR);
+
+		}
                 fclose(diku1);
                 fclose(diku2);
 
